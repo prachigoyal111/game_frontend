@@ -30,18 +30,18 @@ export default function MemberForm() {
     if (balance !== '') payload.balance = Number(balance);
     if (isEdit && id) await updateMember(id, payload);
     else await createMember(payload);
-    navigate('/members');
+    navigate('/');
   };
 
   return (
-    <form onSubmit={onSubmit} className="max-w-lg grid gap-4">
+    <form onSubmit={onSubmit} className="max-w-xl grid gap-4 p-6 bg-white/70 backdrop-blur rounded-xl shadow-sm">
       <h1 className="text-xl font-semibold">{isEdit ? 'Edit Member' : 'New Member'}</h1>
       <TextInput label="Name" value={name} onChange={e=>setName(e.target.value)} required />
       <TextInput label="Phone" value={phone} onChange={e=>setPhone(e.target.value)} required />
       <NumberInput label="Balance (optional)" value={balance} onChange={e=>setBalance(e.target.value === '' ? '' : Number(e.target.value))} />
       <div className="flex gap-2">
         <Button type="submit">Save</Button>
-        <Button type="button" className="bg-gray-200 text-gray-800 hover:bg-gray-300" onClick={()=>navigate('/members')}>Cancel</Button>
+        <Button type="button" className="bg-gray-200 text-gray-800 hover:bg-gray-300" onClick={()=>navigate('/')}>Cancel</Button>
       </div>
     </form>
   );

@@ -21,11 +21,11 @@ export default function TransactionForm() {
   const onSubmit = async (e: FormEvent) => {
     e.preventDefault();
     await createTransaction({ memberId, gameId });
-    navigate('/transactions');
+    navigate('/');
   };
 
   return (
-    <form onSubmit={onSubmit} className="max-w-lg grid gap-4">
+    <form onSubmit={onSubmit} className="max-w-xl grid gap-4 p-6 bg-white/70 backdrop-blur rounded-xl shadow-sm">
       <h1 className="text-xl font-semibold">New Transaction</h1>
       <Select label="Member" value={memberId} onChange={e=>setMemberId(e.target.value)} required>
         <option value="" disabled>Select a member</option>
@@ -41,7 +41,7 @@ export default function TransactionForm() {
       </Select>
       <div className="flex gap-2">
         <Button type="submit">Save</Button>
-        <Button type="button" className="bg-gray-200 text-gray-800 hover:bg-gray-300" onClick={()=>navigate('/transactions')}>Cancel</Button>
+        <Button type="button" className="bg-gray-200 text-gray-800 hover:bg-gray-300" onClick={()=>navigate('/')}>Cancel</Button>
       </div>
     </form>
   );
